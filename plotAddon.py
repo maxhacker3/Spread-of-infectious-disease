@@ -18,21 +18,25 @@ if os.path.exists("autocorr.csv"):
 
 	if aut.size != 0: # check if file is not empty
 		fig = plt.figure(figsize=(18,7))
-		fig.suptitle("Goodness of MT19937 random-number-generator", fontsize=16)
+		fig.suptitle("Goodness of MT19937 random-number-generator", fontsize=21)
         
 		plt.subplot(121)
 		x = np.arange(aut.shape[0])
 		plt.scatter(x, aut[:,0], s = 7, color = "Darkblue")
 		plt.grid()
-		plt.xlabel("N")
-		plt.ylabel("Random number")
+		plt.xlabel("N", fontsize = 18)
+		plt.ylabel("Random number", fontsize = 18)
+		plt.yticks(fontsize = 14)
+		plt.xticks(fontsize = 14)
         
 		plt.subplot(122)
 		auto = aut[1:500,:]
 		x = np.arange(auto.shape[0])
 		plt.plot(x,auto[:,1], lw = 0.9, color = "Black")
-		plt.xlabel("N")
-		plt.ylabel(r"Autocorrelation $\rho$")
+		plt.xlabel("N", fontsize = 18)
+		plt.yticks(fontsize = 14)
+		plt.xticks(fontsize = 14)
+		plt.ylabel(r"Autocorrelation $\rho$", fontsize = 18)
 		plt.grid()
 		plt.savefig("../plots/autocorrelation.png", dpi = 400)
 
@@ -49,7 +53,7 @@ if os.path.exists("goodness_random_triple.csv"):
 	good = pd.read_csv("goodness_random_triple.csv", header = None).to_numpy()
 	if not good.size == 0:
 	    fig = plt.figure(figsize = (8,5))
-	    fig.suptitle("3D-Projection of randomly generated triplets")
+	    fig.suptitle("3D-Projection of randomly generated triplets", fontsize = 20)
 	    ax = fig.add_axes([0,0,1,1], projection = '3d')
 	    ax.scatter(good[:,0], good[:,1], good[:,2], '.', color = "Red", s = 16, label = "random-generator")
 	    plt.savefig("../plots/goodness_3d.png", dpi = 400)
